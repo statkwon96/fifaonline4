@@ -1,4 +1,4 @@
-# FIFA ONLINE 4 Open API
+# FIFA.py 사용법
 
 ## 1. 모듈 불러오기
 
