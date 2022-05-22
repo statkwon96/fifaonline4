@@ -145,23 +145,19 @@ userinfo_dict_r
 matchdata = MatchData(api_key)
 ```
 
+### a. 매치 기록
+
 ```py
 matchinfo = matchdata.matchinfo(accessid=userinfo_dict.keys(), limit=5)
-# 2022-05-22 14:52:35 기준 accessid에 속한 유저들의 최근 1~5번째 경기의 matchid를 저장하였습니다.
 ```
+<img width="693" alt="스크린샷 2022-05-22 오후 3 13 05" src="https://user-images.githubusercontent.com/57558636/169681546-5dc2f76a-d43d-4019-9cac-6abfc9bb6277.png">
 
 ```py
 matchinfo
 ```
+<img width="242" alt="스크린샷 2022-05-22 오후 3 13 59" src="https://user-images.githubusercontent.com/57558636/169681588-a4a960f6-fa8e-488a-8eef-038371de9a51.png">
 
-```py
-['6289638d778d875b55979f7a',
- '628960302cf74a2e356a811d',
- '62869f87fb10a3f5bcda5a0a',
- '62856274e7fdee296ed0fde8',
- '62855fd292a83d98548b1cb5',
- ...]
-```
+### b. 매치 상세 정보
 
 ```py
 matchdetail = matchdata.matchdetail(matchinfo)
@@ -170,23 +166,20 @@ matchdetail = matchdata.matchdetail(matchinfo)
 ```py
 matchdetail
 ```
+<img width="475" alt="스크린샷 2022-05-22 오후 3 14 39" src="https://user-images.githubusercontent.com/57558636/169681604-66db0b17-c5bd-41ce-983b-ea4c3f6619e1.png">
 
-```py
-[{'matchId': '6289638d778d875b55979f7a',
-  'matchDate': '2022-05-22T07:18:16',
-  'matchType': 50,
-  'matchInfo': [{'accessId': 'b474551605918042ab64fc81',
-    'nickname': '90min현식',
-    'matchDetail': {'seasonId': 202205,
-     'matchResult': '패',
-     'matchEndType': 2,
-     ...}]}]
-```
+---
+
+## 5. 데이터프레임 가공
 
 ```py
 dataset = Dataset()
-dataset.team_korea()
 ```
+
+```py
+print(dataset.team_korea())
+```
+<img width="988" alt="스크린샷 2022-05-22 오후 3 15 45" src="https://user-images.githubusercontent.com/57558636/169681627-da943821-3b3e-4176-9632-0ed02edfe5f8.png">
 
 ```py
 matchdetail_df = dataset.dataset(matchdetail, spid_dict)
@@ -195,5 +188,4 @@ matchdetail_df = dataset.dataset(matchdetail, spid_dict)
 ```py
 matchdetail_df
 ```
-
 <img width="992" alt="스크린샷 2022-05-22 오후 2 55 24" src="https://user-images.githubusercontent.com/57558636/169681002-419176f9-7b7a-4664-9358-071c15554bac.png">
